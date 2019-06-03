@@ -1,0 +1,2 @@
+# Task
+Take a look at this http://www.alpacajs.org/ . We're using this library as form/field genrator. Take a look at one of the field here http://www.alpacajs.org/docs/fields/chooser.html .It's called Chooser Field. Which we can add item and sort the item. But, there is no drag and drop feature there for sorting. I need you to make one. please take a look at this http://prntscr.com/nwvzbv
