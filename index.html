@@ -2,6 +2,8 @@
   <head>
     <!-- jquery -->
     <script type="text/javascript" src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <!-- jquery UI -->
+    <script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
     <!-- bootstrap -->
     <link type="text/css" rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" />
@@ -14,8 +16,50 @@
     <link type="text/css" href="//cdn.jsdelivr.net/npm/alpaca@1.5.27/dist/alpaca/bootstrap/alpaca.min.css" rel="stylesheet" />
     <script type="text/javascript" src="//cdn.jsdelivr.net/npm/alpaca@1.5.27/dist/alpaca/bootstrap/alpaca.min.js"></script>
 
+
   </head>
   <body>
     <div id="form"></div>
+
+
+    <script>
+      $(document).ready(function() {
+        $("#form").alpaca({
+          "schema": {
+            "type": "string",
+            "title": "Select your favorite colors",
+            "enum": ["red", "orange", "yellow", "green", "blue", "indigo", "violet"]
+          },
+          "options": {
+            "type": "chooser",
+            "optionLabels": ["Red", "Orange", "Yellow", "Green", "Blue", "Indigo", "Violet"],
+            "form": {
+              "buttons": {
+                "view": {
+                  "label": "View JSON",
+                  "click": function() {
+                    alert(JSON.stringify(this.getValue(), null, "  "));
+                  }
+                }
+              }
+            }
+          },
+          "data": ["red", "yellow", "green"],
+          "postRender": function(control) {
+            $(".chooser-panel-selected .chooser-panel-items").sortable({
+              stop: function(event, ui) {
+                console.log("DEBUG need to re-order");
+                let els = $(".chooser-panel-selected .chooser-panel-items .chooser-item");
+                // console.log(els.length);
+                for (let index = 0; index < els.length; index++) {
+                  $(els[index]).attr("data-chooser-item-index", index);
+                }
+              }
+            });
+            // $("#sortable").disableSelection();
+          }
+        });
+      });
+    </script>
   </body>
 </html>
