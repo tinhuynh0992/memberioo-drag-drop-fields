@@ -48,24 +48,24 @@
           "postRender": function(control) {
             $(".chooser-panel-selected .chooser-panel-items").sortable({
               stop: function(event, ui) {
-                console.log("DEBUG need to re-order");
                 let els = $(".chooser-panel-selected .chooser-panel-items .chooser-item");
-                // console.log(els.length);
+                let newData = [];
                 for (let index = 0; index < els.length; index++) {
-                  $(els[index]).attr("data-chooser-item-index", index);
+                  newData.push($(els[index]).attr("data-chooser-item-value"));
                 }
+                control.setValue(newData);
               }
             });
 
             control.on("ready", function() {
               $(".chooser-panel-selected .chooser-panel-items").sortable({
                 stop: function(event, ui) {
-                  console.log("DEBUG need to re-order");
                   let els = $(".chooser-panel-selected .chooser-panel-items .chooser-item");
-                  // console.log(els.length);
+                  let newData = [];
                   for (let index = 0; index < els.length; index++) {
-                    $(els[index]).attr("data-chooser-item-index", index);
+                    newData.push($(els[index]).attr("data-chooser-item-value"));
                   }
+                  control.setValue(newData);
                 }
               });
             });
