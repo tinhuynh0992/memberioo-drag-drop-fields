@@ -56,7 +56,19 @@
                 }
               }
             });
-            // $("#sortable").disableSelection();
+
+            control.on("ready", function() {
+              $(".chooser-panel-selected .chooser-panel-items").sortable({
+                stop: function(event, ui) {
+                  console.log("DEBUG need to re-order");
+                  let els = $(".chooser-panel-selected .chooser-panel-items .chooser-item");
+                  // console.log(els.length);
+                  for (let index = 0; index < els.length; index++) {
+                    $(els[index]).attr("data-chooser-item-index", index);
+                  }
+                }
+              });
+            });
           }
         });
       });
