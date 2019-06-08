@@ -54,6 +54,10 @@
                   newData.push($(els[index]).attr("data-chooser-item-value"));
                 }
                 control.setValue(newData);
+
+                // Source code for proving data is updated after drag n drop
+                var tempControl = $("#form").alpaca("get");
+                console.log("DEBUG ", tempControl.getValue());
               }
             });
 
@@ -66,6 +70,10 @@
                     newData.push($(els[index]).attr("data-chooser-item-value"));
                   }
                   control.setValue(newData);
+
+                  // Source code for proving data is updated after drag n drop
+                  var tempControl = $("#form").alpaca("get");
+                  console.log("DEBUG ", tempControl.getValue());
                 }
               });
             });
